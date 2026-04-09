@@ -2,7 +2,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:weather/common/rounded_container.dart';
+import 'package:weather_app/common/rounded_container.dart';
 
 class CustomBackground extends StatelessWidget {
   const CustomBackground({

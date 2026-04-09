@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weather/common/custom_background.dart';
-import 'package:weather/screen/widgets/body_section.dart';
-import 'package:weather/screen/widgets/header_section.dart';
-import 'package:weather/screen/widgets/lower_section.dart';
+import 'package:weather_app/common/custom_background.dart';
+import 'package:weather_app/screen/widgets/body_section.dart';
+import 'package:weather_app/screen/widgets/header_section.dart';
+import 'package:weather_app/screen/widgets/lower_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
       body: Padding(
-        padding: EdgeInsetsGeometry.fromLTRB(20, 1.2 * kToolbarHeight, 20, 20),
+        padding: EdgeInsetsGeometry.fromLTRB(20, 1.2 * kToolbarHeight, 30, 20),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Stack(

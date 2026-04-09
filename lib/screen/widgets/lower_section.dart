@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/common/custom_weather_card.dart';
+import 'package:weather_app/common/custom_weather_card.dart';
 
 class LowerSection extends StatelessWidget {
   const LowerSection({super.key});
