@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:weather_app/common/custom_background.dart';
-import 'package:weather_app/screen/widgets/body_section.dart';
-import 'package:weather_app/screen/widgets/header_section.dart';
-import 'package:weather_app/screen/widgets/lower_section.dart';
+import 'package:weather_app/screen/widgets/main_ui.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,25 +27,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               CustomBackground(),
               // Ui
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // location and gretings
-                      HeaderSection(),
-                      // Image, temp, day and time
-                      BodySection(),
-                      const SizedBox(height: 20),
-                  
-                      // temp and sunrise-sunset time
-                      LowerSection(),
-                    ],
-                  ),
-                ),
-              ),
+              MainUI(),
             ],
           ),
         ),
@@ -55,6 +35,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 
 
 

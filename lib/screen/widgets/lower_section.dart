@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:weather_app/bloc/weather/weather_bloc.dart';
 import 'package:weather_app/common/custom_weather_card.dart';
 
 class LowerSection extends StatelessWidget {
@@ -6,41 +9,62 @@ class LowerSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<WeatherBloc, WeatherState>(
+      builder: (context, state) {
+        if(state is WeatherSuccess){
+          
+        return Column(
           children: [
-            // sunrise
-            CustomWeatherCard(image: "assets/11.png",title: "Sunrise",content: "05:34 am",),
-            // sunset
-            CustomWeatherCard(image: "assets/12.png", title: "Sunset", content: "06:14 pm"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // sunrise
+                CustomWeatherCard(
+                  image: "assets/11.png",
+                  title: "Sunrise",
+                  content: DateFormat().add_jm().format(state.weather.sunrise!)
+                ),
+                // sunset
+                CustomWeatherCard(
+                  image: "assets/12.png",
+                  title: "Sunset",
+                  content: DateFormat().add_jm().format(state.weather.sunset!),
+                ),
+              ],
+            ),
+            // devider
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              child: Divider(
+                color: const Color.fromARGB(255, 51, 51, 51),
+                height: 0.5,
+              ),
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Max temp
+                CustomWeatherCard(
+                  image: "assets/13.png",
+                  title: "Temp Max",
+                  content: "${state.weather.tempMax!.celsius!.round()}°C",
+                ),
+
+                // Min Temp
+                CustomWeatherCard(
+                  image: "assets/14.png",
+                  title: "Temp Min",
+                  content: "${state.weather.tempMin!.celsius!.round()}°C",
+                ),
+              ],
+            ),
           ],
-        ),
-        // devider
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5.0),
-          child: Divider(
-            color: const Color.fromARGB(255, 51, 51, 51),
-            height: 0.5,
-          ),
-        ),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Max temp
-
-            CustomWeatherCard(image: "assets/13.png", title:  "Temp Max", content: "22° C"),
-            
-            // Min Temp
-
-            CustomWeatherCard(image: "assets/14.png", title:  "Temp Min", content: "8° C"),
-            
-          ],
-        ),
-      ],
+        );
+        }else{
+          return SizedBox();
+        }
+      },
     );
   }
 }
-
